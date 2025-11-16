@@ -87,24 +87,32 @@ struct ContentView: View {
         let amexGold = CreditCard(name: "Amex Gold", issuer: "American Express")
         modelContext.insert(amexGold)
 
-        // Amex Gold credits
+        // Amex Gold credits - Based on 2025 benefits
         let uberCredit = Credit(
             name: "Uber Cash",
             amount: 10.00,
             category: "Transportation",
-            notes: "Monthly Uber credit"
+            notes: "$10/month for Uber rides, Uber Eats, and Uber groceries"
         )
         let diningCredit = Credit(
             name: "Dining Credit",
             amount: 10.00,
             category: "Dining",
-            notes: "Grubhub, Seamless, etc."
+            notes: "Grubhub, Cheesecake Factory, Goldbelly, Wine.com, Five Guys"
+        )
+        let dunkinCredit = Credit(
+            name: "Dunkin' Credit",
+            amount: 7.00,
+            category: "Dining",
+            notes: "$7/month for eligible U.S. Dunkin' purchases"
         )
 
         amexGold.credits.append(uberCredit)
         amexGold.credits.append(diningCredit)
+        amexGold.credits.append(dunkinCredit)
         modelContext.insert(uberCredit)
         modelContext.insert(diningCredit)
+        modelContext.insert(dunkinCredit)
     }
 }
 

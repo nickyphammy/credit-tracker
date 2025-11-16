@@ -71,25 +71,33 @@ struct AddCardView: View {
         let card = CreditCard(name: name, issuer: issuer)
         modelContext.insert(card)
 
-        // Add default credits for Amex Gold
+        // Add default credits for Amex Gold - Based on 2025 benefits
         if name == "Amex Gold" {
             let uberCredit = Credit(
                 name: "Uber Cash",
                 amount: 10.00,
                 category: "Transportation",
-                notes: "Monthly Uber credit"
+                notes: "$10/month for Uber rides, Uber Eats, and Uber groceries"
             )
             let diningCredit = Credit(
                 name: "Dining Credit",
                 amount: 10.00,
                 category: "Dining",
-                notes: "Grubhub, Seamless, The Cheesecake Factory, etc."
+                notes: "Grubhub, Cheesecake Factory, Goldbelly, Wine.com, Five Guys"
+            )
+            let dunkinCredit = Credit(
+                name: "Dunkin' Credit",
+                amount: 7.00,
+                category: "Dining",
+                notes: "$7/month for eligible U.S. Dunkin' purchases"
             )
 
             card.credits.append(uberCredit)
             card.credits.append(diningCredit)
+            card.credits.append(dunkinCredit)
             modelContext.insert(uberCredit)
             modelContext.insert(diningCredit)
+            modelContext.insert(dunkinCredit)
         }
 
         dismiss()
